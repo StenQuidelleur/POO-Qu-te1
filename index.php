@@ -1,10 +1,25 @@
 <?php
     require_once 'Bicycle.php';
     require_once 'Car.php';
+    require_once 'Camion.php';
 
-    $bike = new Bicycle('red');
+
+    $bicycle = new Bicycle('blue', 1);
+    echo $bicycle->forward();
+    var_dump($bicycle);
+
+    $car = new Car('green', 4, 'electric');
+    echo $car->forward();
+    var_dump($car);
+
+    $camion = new Camion(30,'red',3,'fuel');
+    echo $camion->forward();
+    echo $camion->levelCharge();
+    echo $camion->brake();
+    var_dump($camion);
+
+    $bike = new Bicycle('red',1);
     $bike->setCurrentSpeed(0);
-    $bike->dump();
 
     echo $bike->forward();
     echo '<br> Vitesse du vélo : ' . $bike->getCurrentSpeed() . ' km/h' . '<br>';

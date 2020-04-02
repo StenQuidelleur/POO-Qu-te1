@@ -1,94 +1,54 @@
 <?php
 
-    class Car {
-        private $nbWheels = 4;
-        private $currentSpeed;
-        private $color;
-        private $nbSeats;
+require_once 'Vehicle.php';
+
+    class Car extends Vehicle
+    {
+        /**
+         * @var string
+         */
         private $energy;
+
+        /**
+         * @var int
+         */
         private $energyLevel;
 
-        public function __construct($color, $nbSeats, $energy)
+        const ALLOWED_ENERGIES = [
+            'fuel',
+            'electric',
+        ];
+
+        public function __construct(string $color, int $nbSeats, string $energy)
         {
-            $this->color = $color;
-            $this->nbSeats = $nbSeats;
-            $this->energy = $energy;
+            parent::__construct($color, $nbSeats);
+            $this->setEnergy($energy);
         }
 
-        public function forward(){
-            $this->currentSpeed = 70;
-            return "Wouuuuhouuu !";
+        public function getEnergy(): string
+        {
+            return $this->energy;
         }
 
-        public function brake(){
-            $sentence = "";
-            while ($this->currentSpeed > 0) {
-                $this->currentSpeed--;
-                $sentence .= "Stooooooop !!!";
+        public function setEnergy(string $energy): void
+        {
+            if (in_array($energy, self::ALLOWED_ENERGIES)) {
+                $this->energy = $energy;
             }
-            $sentence .= "File moi le volant  !";
-            return $sentence;
+        }
+
+        public function getEnergyLevel(): int
+        {
+            return $this->energyLevel;
+        }
+
+        public function setEnergyLevel(int $energyLevel): void
+        {
+            $this->energyLevel = $energyLevel;
         }
 
         public function start(){
             return "Vas-y tournes la clé !";
         }
-
-        public function getNbWheels()
-        {
-            return $this->nbWheels;
-        }
-        public function setNbWheels($nbWheels)
-        {
-            $this->nbWheels = $nbWheels;
-        }
-
-        public function getCurrentSpeed()
-        {
-            return $this->currentSpeed;
-        }
-        public function setCurrentSpeed($currentSpeed)
-        {
-            $this->currentSpeed = $currentSpeed;
-        }
-
-        public function getColor()
-        {
-            return $this->color;
-        }
-        public function setColor($color)
-        {
-            $this->color = $color;
-        }
-
-        public function getNbSeats()
-        {
-            return $this->nbSeats;
-        }
-        public function setNbSeats($nbSeats)
-        {
-            $this->nbSeats = $nbSeats;
-        }
-
-        public function getEnergy()
-        {
-            return $this->energy;
-        }
-        public function setEnergy($energy)
-        {
-            $this->energy = $energy;
-        }
-
-        public function getEnergyLevel()
-        {
-            return $this->energyLevel;
-        }
-
-        public function setEnergyLevel($energyLevel)
-        {
-            $this->energyLevel = $energyLevel;
-        }
-
-
 
     }
