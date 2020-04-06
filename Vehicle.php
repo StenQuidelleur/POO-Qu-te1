@@ -2,7 +2,7 @@
 
 // Vehicle.php
 
-class Vehicle
+abstract class Vehicle
 {
     /**
      * @var string
@@ -22,9 +22,9 @@ class Vehicle
     /**
      * @var integer
      */
-    protected $nbWheels= 4;
+    protected $nbWheels;
 
-    public function __construct(string $color, int $nbSeats)
+    public function __construct(string $color, int $nbSeats )
     {
         $this->color = $color;
         $this->nbSeats = $nbSeats;

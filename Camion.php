@@ -1,7 +1,7 @@
 <?php
 require_once 'Vehicle.php';
 
-class Camion extends Vehicle
+final class Camion extends Vehicle
 {
     private $stockage;
     private $charge = 0;

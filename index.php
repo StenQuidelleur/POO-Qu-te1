@@ -2,39 +2,55 @@
     require_once 'Bicycle.php';
     require_once 'Car.php';
     require_once 'Camion.php';
+    require_once 'Skateboard.php';
+    require_once 'MotorWay.php';
+    require_once 'PedestrianWay.php';
+    require_once 'ResidentialWay.php';
+
+
+
+    $skate= new Skateboard('red', 1);
+
+    $camion= new Camion(20,'green',3,'electric');
 
 
     $bicycle = new Bicycle('blue', 1);
     echo $bicycle->forward();
-    var_dump($bicycle);
+
 
     $car = new Car('green', 4, 'electric');
     echo $car->forward();
     var_dump($car);
 
-    $camion = new Camion(30,'red',3,'fuel');
-    echo $camion->forward();
-    echo $camion->levelCharge();
-    echo $camion->brake();
-    var_dump($camion);
-
-    $bike = new Bicycle('red',1);
-    $bike->setCurrentSpeed(0);
-
-    echo $bike->forward();
-    echo '<br> Vitesse du vélo : ' . $bike->getCurrentSpeed() . ' km/h' . '<br>';
-    echo $bike->brake();
-    echo '<br> Vitesse du vélo : ' . $bike->getCurrentSpeed() . ' km/h' . '<br>';
-    echo $bike->brake();
-
-    $car = new Car("red", 5,"Sans Plomb");
-    echo '<br>'.$car->start();
-    echo '<br> La voiture à ' . $car->getNbWheels() .' roues et de couleur'. $car->getColor() .'.<br>';
+    $car2 = new Car('red', 4, 'electric');
     echo $car->forward();
-    echo '<br> On est actuellement à '.$car->getCurrentSpeed() .'km/h tu vas trop vite. <br>';
-    echo $car->brake();
-    echo '<br> La vitesse de la voiture: '.$car->getCurrentSpeed(). 'km/h.<br>';
-    echo $car->brake();
+    var_dump($car2);
+
+    $motorway = new MotorWay();
+    $motorway->addVehicule($car);
+    $motorway->addVehicule($car2);
+    var_dump($motorway);
+
+    $pedestrianway = new PedestrianWay();
+    $pedestrianway->addVehicule($skate);
+    var_dump($pedestrianway);
+
+    $residentialway = new ResidentialWay();
+    $residentialway->addVehicule($camion);
+    var_dump($residentialway);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
