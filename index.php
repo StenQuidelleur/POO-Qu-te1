@@ -9,19 +9,16 @@
 
 
 
-    $skate= new Skateboard('red', 1);
-
-    $camion= new Camion(20,'green',3,'electric');
 
 
-    $bicycle = new Bicycle('blue', 1);
-    echo $bicycle->forward();
+    $parkBrake = false;
 
 
     $car = new Car('green', 4, 'electric');
-    echo $car->forward();
+    $car->setHasParkBrake($parkBrake);
+    echo $car->start();
     var_dump($car);
-
+    /*
     $car2 = new Car('red', 4, 'electric');
     echo $car->forward();
     var_dump($car2);
@@ -38,7 +35,7 @@
     $residentialway = new ResidentialWay();
     $residentialway->addVehicule($camion);
     var_dump($residentialway);
-
+    */
 
 
 

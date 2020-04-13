@@ -19,6 +19,8 @@ require_once 'Vehicle.php';
             'electric',
         ];
 
+        private $hasParkBrake = true ;
+
         public function __construct(string $color, int $nbSeats, string $energy)
         {
             parent::__construct($color, $nbSeats);
@@ -47,8 +49,34 @@ require_once 'Vehicle.php';
             $this->energyLevel = $energyLevel;
         }
 
+        /**
+        * @return bool
+        */
+        public function getHasParkBrake()
+        {
+         return $this->hasParkBrake;
+        }
+
+        /**
+        * @param bool $hasParkBrake
+        */
+        public function setHasParkBrake($hasParkBrake)
+        {
+            $this->hasParkBrake = $hasParkBrake;
+        }
+
+
+
         public function start(){
-            return "Vas-y tournes la clé !";
+            try{
+                if($this->hasParkBrake){
+                    throw new Exception("Le vehicule ne peut pas dérramer car il y a le frien à main");
+                }
+            }catch (Exception $e) {
+                echo $e;
+            }finally {
+                return "Ma voiture roule comme un donut !";
+            }
         }
 
     }
