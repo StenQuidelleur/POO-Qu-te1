@@ -1,8 +1,9 @@
 <?php
 
 require_once 'Vehicle.php';
+require_once 'LightableInterface.php';
 
-     final class Car extends Vehicle
+     final class Car extends Vehicle implements LightableInterface
     {
         /**
          * @var string
@@ -19,7 +20,7 @@ require_once 'Vehicle.php';
             'electric',
         ];
 
-        private $hasParkBrake = true ;
+        private $hasParkBrake = true;
 
         public function __construct(string $color, int $nbSeats, string $energy)
         {
@@ -65,8 +66,6 @@ require_once 'Vehicle.php';
             $this->hasParkBrake = $hasParkBrake;
         }
 
-
-
         public function start(){
             try{
                 if($this->hasParkBrake){
@@ -78,5 +77,15 @@ require_once 'Vehicle.php';
                 return "Ma voiture roule comme un donut !";
             }
         }
+
+         public function switchOn(): int
+         {
+             return true;
+         }
+
+         public function switchOff(): int
+         {
+             return false;
+         }
 
     }
