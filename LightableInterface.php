@@ -3,6 +3,6 @@
 
 interface LightableInterface
 {
-    public function switchOn(int $percentage) :int;
-    public function switchOff(int $percentage) :int;
+    public function switchOn() :int;
+    public function switchOff() :int;
 }
